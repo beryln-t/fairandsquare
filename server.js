@@ -17,6 +17,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "dist")));
 
 //use routes
+app.use("/api/user", usersRouter);
+app.use("/api/bills", billsRouter);
+app.use("/api/contactsRouter", contactsRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

@@ -1,9 +1,15 @@
-const mongoose = require("mongoose");
+const { Pool } = require("pg");
+require("dotenv").config();
 
-mongoose.connect(process.env.DATABASE_URL);
-
-const db = mongoose.connection;
-
-db.on("connected", function () {
-  console.log(`Connected to ${db.name} at ${db.host}:${db.port}`);
+const pool = new Pool({
+  user: "pwjobrtb",
+  host: "john.db.elephantsql.com",
+  database: "pwjobrtb",
+  password: process.env.DB_PASSWORD,
+  port: 5432,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
+
+module.exports = pool;

@@ -5,6 +5,9 @@ require("dotenv").config();
 require("./config/database");
 
 //define routes
+const usersRouter = require("./routes/usersRouter");
+const billsRouter = require("./routes/billsRouter");
+const contactsRouter = require("./routes/contactsRouter");
 
 const app = express();
 const port = process.env.PORT || 3000;

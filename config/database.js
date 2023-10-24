@@ -1,15 +1,21 @@
-const { Pool } = require("pg");
+const { Sequelize } = require("sequelize");
 require("dotenv").config();
 
-const pool = new Pool({
-  user: "pwjobrtb",
-  host: "john.db.elephantsql.com",
-  database: "pwjobrtb",
-  password: process.env.DB_PASSWORD,
-  port: 5432,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+const sequelize = new Sequelize(
+  "pwjobrtb",
+  "pwjobrtb",
+  process.env.DB_PASSWORD,
+  {
+    host: "john.db.elephantsql.com",
+    port: 5432,
+    dialect: "postgres",
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+  }
+);
 
-module.exports = pool;
+module.exports = sequelize;

@@ -1,2 +1,2 @@
-const pool = require("../config/database");
+const User = require("../models/User");
 module.exports = {};
